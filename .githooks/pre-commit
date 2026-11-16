@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+branch="$(git branch --show-current)"
+
+if [ "$branch" = "dev" ]; then
+  npm run check
+fi

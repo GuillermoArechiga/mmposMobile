@@ -1,0 +1,79 @@
+/* daisyUI 5 / Tailwind 4 themes for mmPOS — generated. Paste after @plugin "daisyui";
+   "mmpos" is byte-for-byte the theme the apps ship today. "mmpos-light" is proposed. */
+@plugin "daisyui/theme" {
+  name: "mmpos";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: oklch(20% 0.004 264);
+  --color-base-200: oklch(15% 0.003 264);
+  --color-base-300: oklch(11% 0.002 264);
+  --color-base-content: oklch(96% 0.002 264);
+
+  --color-primary: oklch(72.3% 0.163 162.48);
+  --color-primary-content: oklch(11% 0.002 264);
+  --color-secondary: oklch(70.4% 0.14 182.5);
+  --color-secondary-content: oklch(11% 0.002 264);
+  --color-accent: oklch(82.8% 0.141 97.3);
+  --color-accent-content: oklch(15% 0.003 264);
+  --color-neutral: oklch(35% 0.004 264);
+  --color-neutral-content: oklch(96% 0.002 264);
+
+  --color-info: oklch(72% 0.149 213.1);
+  --color-info-content: oklch(11% 0.002 264);
+  --color-success: oklch(72.3% 0.163 162.48);
+  --color-success-content: oklch(11% 0.002 264);
+  --color-warning: oklch(82.8% 0.141 97.3);
+  --color-warning-content: oklch(15% 0.003 264);
+  --color-error: oklch(66.5% 0.195 21.2);
+  --color-error-content: oklch(97% 0.001 264);
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "mmpos-light";
+  default: false;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(97.5% 0.003 264);
+  --color-base-300: oklch(92% 0.004 264);
+  --color-base-content: oklch(21% 0.006 264);
+
+  --color-primary: oklch(72.3% 0.163 162.48);
+  --color-primary-content: oklch(11% 0.002 264);
+  --color-secondary: oklch(70.4% 0.14 182.5);
+  --color-secondary-content: oklch(11% 0.002 264);
+  --color-accent: oklch(82.8% 0.141 97.3);
+  --color-accent-content: oklch(15% 0.003 264);
+  --color-neutral: oklch(30% 0.005 264);
+  --color-neutral-content: oklch(97% 0.002 264);
+
+  --color-info: oklch(72% 0.149 213.1);
+  --color-info-content: oklch(11% 0.002 264);
+  --color-success: oklch(72.3% 0.163 162.48);
+  --color-success-content: oklch(11% 0.002 264);
+  --color-warning: oklch(82.8% 0.141 97.3);
+  --color-warning-content: oklch(15% 0.003 264);
+  --color-error: oklch(66.5% 0.195 21.2);
+  --color-error-content: oklch(97% 0.001 264);
+
+  --radius-selector: 0.5rem;
+  --radius-field: 0.375rem;
+  --radius-box: 0.75rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 0;
+}

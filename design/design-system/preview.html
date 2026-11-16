@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es" data-theme="mmpos">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>mmPOS Design System</title>
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="themes.css">
+<style>
+  *{box-sizing:border-box;margin:0}
+  body{background:var(--mmpos-base-200);color:var(--mmpos-base-content);font-family:var(--mmpos-font-sans);padding:32px max(16px,env(safe-area-inset-left));line-height:1.5}
+  main{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:32px}
+  h1{font-size:36px;font-weight:900;letter-spacing:-.02em}
+  h1 span,.green{color:var(--mmpos-primary)}
+  h2{font-size:12px;letter-spacing:.15em;text-transform:uppercase;opacity:.5;margin-bottom:12px}
+  .card{background:var(--mmpos-base-100);border:1px solid var(--mmpos-base-300);border-radius:var(--mmpos-radius-box);padding:16px}
+  .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+  .sw{border-radius:12px;height:84px;padding:10px;display:flex;flex-direction:column;justify-content:flex-end;font-size:12px;border:1px solid var(--mmpos-base-300)}
+  .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{height:48px;padding:0 20px;border-radius:var(--mmpos-radius-field);border:1px solid transparent;font:600 15px var(--mmpos-font-sans);cursor:pointer}
+  .badge{font-size:12px;padding:2px 10px;border-radius:999px;font-weight:600}
+  .logo{flex:1;min-width:240px;border-radius:16px;padding:24px;display:flex;align-items:center;justify-content:center;border:1px solid var(--mmpos-base-300)}
+  .num{font-variant-numeric:tabular-nums}
+  header{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="row"><img src="../brand/logos/mmpos-app-icon.svg" width="72" height="72" alt="">
+      <div><h1>mm<span>POS</span></h1><p style="opacity:.6">Design system · restaurante y tienda</p></div></div>
+    <button class="btn" id="toggle" style="background:transparent;border-color:var(--mmpos-neutral);color:inherit">Tema claro (propuesto)</button>
+  </header>
+
+  <section><h2>Color</h2><div class="grid" id="colors"></div></section>
+
+  <section><h2>Logos</h2><div class="row">
+    <div class="logo" style="background:#151618"><img src="../brand/logos/mmpos-logo-horizontal.svg" height="72" alt="mmPOS"></div>
+    <div class="logo" style="background:#fff"><img src="../brand/logos/mmpos-logo-horizontal-light.svg" height="72" alt="mmPOS"></div>
+    <div class="logo" style="background:var(--mmpos-primary)"><img src="../brand/logos/mmpos-symbol.svg" height="72" alt=""></div>
+    <div class="logo" style="background:#fff"><img src="../brand/logos/mmpos-logo-monochrome.svg" height="72" alt="mmPOS"></div>
+  </div></section>
+
+  <section><h2>Tipografía</h2><div class="card">
+    <p style="font-size:36px;font-weight:900;letter-spacing:-.02em">Abrir turno</p>
+    <p class="num" style="font-size:24px;font-weight:700">MX$1,428.50 <span style="font-size:12px;font-weight:500;opacity:.6">Venta total</span></p>
+    <p>Texto de cuerpo 16 px. <span style="opacity:.6">Secundario al 60%.</span> <span style="opacity:.5">Sutil al 50%.</span></p>
+    <p class="num" style="color:var(--mmpos-error);font-weight:700">Faltante −MX$15.00</p>
+  </div></section>
+
+  <section><h2>Botones y estados</h2><div class="card row">
+    <button class="btn" style="background:var(--mmpos-primary);color:var(--mmpos-primary-content)">Abrir turno</button>
+    <button class="btn" style="background:var(--mmpos-info);color:var(--mmpos-info-content)">Ver turno</button>
+    <button class="btn" style="background:transparent;border-color:var(--mmpos-neutral);color:inherit">Actualizar</button>
+    <button class="btn" style="background:transparent;border-color:var(--mmpos-error);color:var(--mmpos-error)">Cancelar</button>
+    <span class="badge" style="background:var(--mmpos-success);color:var(--mmpos-success-content)">Pagado</span>
+    <span class="badge" style="background:var(--mmpos-warning);color:var(--mmpos-warning-content)">Pendiente</span>
+    <span class="badge" style="background:var(--mmpos-info);color:var(--mmpos-info-content)">En progreso</span>
+    <span class="badge" style="background:var(--mmpos-error);color:var(--mmpos-error-content)">Cancelado</span>
+  </div></section>
+</main>
+<script>
+  const names = ['primary','secondary','accent','info','success','warning','error','neutral','base-100','base-200','base-300']
+  const box = document.getElementById('colors')
+  for (const n of names) {
+    const content = n.startsWith('base') ? 'var(--mmpos-base-content)' : `var(--mmpos-${n}-content)`
+    const d = document.createElement('div')
+    d.className = 'sw'
+    d.style.cssText = `background:var(--mmpos-${n});color:${content}`
+    d.innerHTML = `<b>${n}</b>`
+    box.appendChild(d)
+  }
+  const btn = document.getElementById('toggle')
+  btn.onclick = () => {
+    const light = document.documentElement.dataset.theme === 'mmpos'
+    document.documentElement.dataset.theme = light ? 'mmpos-light' : 'mmpos'
+    btn.textContent = light ? 'Tema oscuro (oficial)' : 'Tema claro (propuesto)'
+  }
+</script>
+</body>
+</html>
