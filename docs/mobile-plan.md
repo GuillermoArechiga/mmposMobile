@@ -6,6 +6,8 @@ Status: Phase 0 (scaffold) done on `dev`, 2026-11-16. Decisions are in `docs/dec
 
 | Mode | Device | Talks to | Data on the device |
 |---|---|---|---|
+| **Main POS** (D16) | tablet (Android first) | cloud sync + hosts the LAN | encrypted SQLite, the location's source of truth |
+| **Second cashier** | phone or tablet | a main over the LAN | nothing |
 | **Admin** | phone or tablet | cloud API (admin login) | encrypted cache and outbox |
 | **Handheld order taker / mobile till** | phone | main POS over the LAN (paired) | offline order drafts and a menu snapshot |
 | **Kitchen display** (restaurants) | tablet | main POS over the LAN | nothing |
@@ -31,6 +33,11 @@ Main POS (Electron) ── its own cloud sync
         └── Display    (/display/pos-state + customer push channel per till)
 ```
 LAN modes never talk to the cloud and never hold business data (D8).
+
+**One main per location (D15).** Before a device becomes a location's main, the backend must
+confirm no other active main exists (`/devices/main/claim`). An Electron main and an Expo main
+can never both run their own database at the same location. A second device connects as a
+secondary, or an admin transfers the main with their password.
 
 ## 3. Stack
 - **Base:** Expo SDK 58, expo-router, TypeScript strict, ESLint `eslint-config-expo`.
