@@ -39,3 +39,6 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# Local iPhone signing (scripts/phone.sh); this repo is public
+.phone.local
